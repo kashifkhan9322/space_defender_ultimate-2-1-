@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Space Defender Ultimate</title>
+    <meta name="description" content="Your command center. Choose your mission difficulty and launch into battle.">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="starfield"></div>
+    <div class="nebula-glow top-right"></div>
+    <div class="nebula-glow bottom-left"></div>
+
+    <!-- Page -->
+    <div class="page-wrapper dashboard-page" id="dashboardPage">
+
+        <!-- Nav Bar -->
+        <nav class="dash-nav">
+            <div class="dash-nav-brand">🚀 Space Defender</div>
+            <div class="dash-nav-user">
+                <span class="dash-nav-username" id="navUsername"></span>
+                <div class="dash-nav-avatar" id="navAvatar"></div>
+                <button class="btn btn-ghost" onclick="logout()" id="logoutBtnNav">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Welcome -->
+        <div class="dash-welcome">
+            <h1>Welcome back, <span id="welcomeName">Pilot</span></h1>
+            <p>Ready for another mission, Commander?</p>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dash-grid">
+
+            <!-- Player Stats Card -->
+            <div class="dash-card">
+                <span class="dash-card-icon">📊</span>
+                <h3>Your Stats</h3>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statGames">0</span>
+                        <span class="stat-label">Games</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statHighScore">0</span>
+                        <span class="stat-label">High Score</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statKills">0</span>
+                        <span class="stat-label">Total Kills</span>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statMaxWave">0</span>
+                        <span class="stat-label">Max Wave</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statMaxCombo">0</span>
+                        <span class="stat-label">Max Combo</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statTotalScore">0</span>
+                        <span class="stat-label">Total Score</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Game Card -->
+            <div class="dash-card">
+                <span class="dash-card-icon">🎮</span>
+                <h3>Start Mission</h3>
+                <p>Select your difficulty and launch into battle.</p>
+
+                <div class="difficulty-group">
+                    <label>Difficulty</label>
+                    <div class="difficulty-options">
+                        <button class="difficulty-btn" data-diff="easy" onclick="selectDifficulty('easy')">Easy</button>
+                        <button class="difficulty-btn active" data-diff="medium"
+                            onclick="selectDifficulty('medium')">Medium</button>
+                        <button class="difficulty-btn" data-diff="hard" onclick="selectDifficulty('hard')">Hard</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full pulse-glow" onclick="startGame()" id="startGameBtn">
+                    🚀 Launch Game
+                </button>
+            </div>
+
+            <!-- Leaderboard Card -->
+            <div class="dash-card" style="grid-column: 1 / -1;">
+                <span class="dash-card-icon">🏆</span>
+                <h3>Leaderboard</h3>
+                <p>Top pilots across the galaxy.</p>
+
+                <button class="btn btn-outline" onclick="toggleLeaderboard()" id="toggleLbBtn">
+                    View Rankings
+                </button>
+
+                <div class="leaderboard-panel" id="leaderboardPanel">
+                    <div class="leaderboard-list" id="leaderboardEntries">
+                        <div class="leaderboard-empty">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /dash-grid -->
+
+        <!-- Logout -->
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn btn-danger" onclick="logout()" id="logoutBtn">
+                🔓 Logout
+            </button>
+        </div>
+
+    </div><!-- /page-wrapper -->
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+
+</html>

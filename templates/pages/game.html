@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game — Space Defender Ultimate</title>
+    <meta name="description" content="Defend the galaxy from incoming alien threats in Space Defender Ultimate.">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <!-- Page -->
+    <div class="page-wrapper game-page" id="gamePage">
+
+        <!-- HUD Top Bar -->
+        <div class="game-hud">
+            <div class="hud-left">
+                <div class="hud-stat">
+                    <span class="hud-stat-icon">⭐</span>
+                    <span class="hud-stat-label">Score</span>
+                    <span class="hud-stat-value" id="hudScore">0</span>
+                </div>
+                <div class="hud-stat">
+                    <span class="hud-stat-icon">🌊</span>
+                    <span class="hud-stat-label">Wave</span>
+                    <span class="hud-stat-value" id="hudWave">1</span>
+                </div>
+                <div class="hud-stat">
+                    <span class="hud-stat-icon">❤️</span>
+                    <span class="hud-stat-label">Health</span>
+                    <span class="hud-stat-value" id="hudHealth">100</span>
+                </div>
+                <div class="hud-stat">
+                    <span class="hud-stat-icon">💚</span>
+                    <span class="hud-stat-label">Lives</span>
+                    <span class="hud-stat-value" id="hudLives">3</span>
+                </div>
+                <div class="hud-stat">
+                    <span class="hud-stat-icon">🔥</span>
+                    <span class="hud-stat-label">Combo</span>
+                    <span class="hud-stat-value" id="hudCombo">1.0x</span>
+                </div>
+            </div>
+            <div class="hud-right">
+                <div id="difficultyBadge" class="difficulty-badge medium">MEDIUM</div>
+                <button class="hud-btn" id="autoFireBtn">🔫 AUTO-FIRE: OFF</button>
+                <button class="pause-btn" onclick="togglePause()" id="pauseBtn">⏸ Pause</button>
+                <button class="hud-btn danger" onclick="backToDashboard()" id="backBtn">← Dashboard</button>
+            </div>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="game-canvas-wrapper">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="specialEventNotify"></div>
+
+            <!-- Pause Overlay -->
+            <div class="pause-overlay" id="pauseOverlay">
+                <div class="pause-card">
+                    <h2>⏸ PAUSED</h2>
+                    <button class="btn btn-primary" onclick="togglePause()">▶ Resume</button>
+                    <button class="btn btn-outline" onclick="backToDashboard()">← Dashboard</button>
+                </div>
+            </div>
+
+            <!-- Game Over Overlay -->
+            <div class="game-over-overlay" id="gameOverOverlay">
+                <div class="game-over-card">
+                    <h2>GAME OVER</h2>
+                    <div class="game-over-stats">
+                        <div class="game-over-stat">
+                            <span class="game-over-stat-value" id="finalScore">0</span>
+                            <span class="game-over-stat-label">Score</span>
+                        </div>
+                        <div class="game-over-stat">
+                            <span class="game-over-stat-value" id="finalWave">1</span>
+                            <span class="game-over-stat-label">Wave</span>
+                        </div>
+                        <div class="game-over-stat">
+                            <span class="game-over-stat-value" id="finalKills">0</span>
+                            <span class="game-over-stat-label">Kills</span>
+                        </div>
+                        <div class="game-over-stat">
+                            <span class="game-over-stat-value" id="finalCombo">1.0x</span>
+                            <span class="game-over-stat-label">Max Combo</span>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Difficulty Selection before restart -->
+                    <div class="difficulty-group"
+                        style="margin: 20px 0; padding: 15px; background: rgba(0,255,255,0.05); border-radius: var(--radius-sm);">
+                        <label>Select Next Mission Difficulty</label>
+                        <div class="difficulty-options">
+                            <button class="difficulty-btn" data-diff="easy"
+                                onclick="selectDifficulty('easy')">Easy</button>
+                            <button class="difficulty-btn" data-diff="medium"
+                                onclick="selectDifficulty('medium')">Medium</button>
+                            <button class="difficulty-btn" data-diff="hard"
+                                onclick="selectDifficulty('hard')">Hard</button>
+                        </div>
+                    </div>
+
+                    <div class="game-over-buttons">
+                        <button class="btn btn-primary" onclick="restartGame()">🔄 Play Again</button>
+                        <button class="btn btn-outline" onclick="backToDashboard()">← Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="game-controls" id="mobileControls">
+            <button class="control-btn" id="leftBtn">← LEFT</button>
+            <button class="control-btn fire" id="shootBtn">🔥 FIRE</button>
+            <button class="control-btn" id="rightBtn">RIGHT →</button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="game-instructions">
+            ← → or A/D to move &nbsp;|&nbsp; SPACE to toggle auto-fire &nbsp;|&nbsp; ESC to pause
+        </div>
+
+    </div>
+
+    <script src="/static/js/game.js"></script>
+</body>
+
+</html>

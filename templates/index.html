@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Defender Ultimate</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <h1>🚀 SPACE DEFENDER ULTIMATE</h1>
+            <div class="login-box">
+                <input type="text" id="username" placeholder="Enter Username" class="input-field">
+                <div class="difficulty-select">
+                    <label>Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <button onclick="login()" class="play-btn">PLAY NOW</button>
+            </div>
+        </div>
+       
+        <!-- Game Screen (hidden initially) -->
+        <div id="gameScreen" class="game-screen hidden">
+            <div class="game-header">
+                <div class="player-info">
+                    <span id="playerName"></span>
+                    <span>Score: <span id="score">0</span></span>
+                </div>
+                <div class="game-stats">
+                    <span>Wave: <span id="wave">1</span></span>
+                    <span>Health: <span id="health">100</span></span>
+                    <span>Combo: <span id="combo">1.0x</span></span>
+                </div>
+                <button onclick="quitToMenu()" class="quit-btn">Quit</button>
+            </div>
+           
+            <div class="game-area">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+               
+                <!-- Game Over Screen -->
+                <div id="gameOver" class="game-over hidden">
+                    <h2>GAME OVER</h2>
+                    <div class="stats">
+                        <p>Score: <span id="finalScore">0</span></p>
+                        <p>Wave: <span id="finalWave">1</span></p>
+                        <p>Kills: <span id="finalKills">0</span></p>
+                        <p>Headshots: <span id="finalHeadshots">0</span></p>
+                        <p>Max Combo: <span id="finalCombo">1.0x</span></p>
+                    </div>
+                    <div class="buttons">
+                        <button onclick="restart()" class="game-btn">Play Again</button>
+                        <button onclick="quitToMenu()" class="game-btn">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="controls">
+                <button id="leftBtn" class="control-btn">← LEFT</button>
+                <button id="shootBtn" class="control-btn fire">🔥 AUTO FIRE</button>
+                <button id="rightBtn" class="control-btn">RIGHT →</button>
+            </div>
+           
+            <div class="instructions">
+                Use ← → arrows or A/D keys to move | SPACE to toggle AUTO FIRE
+            </div>
+        </div>
+       
+        <!-- Leaderboard -->
+        <div id="leaderboard" class="leaderboard">
+            <h3>🏆 LEADERBOARD</h3>
+            <div id="leaderboardEntries"></div>
+        </div>
+    </div>
+   
+    <script src="/static/js/game.js?v=2"></script>
+</body>
+</html>

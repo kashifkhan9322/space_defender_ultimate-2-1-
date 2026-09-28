@@ -1,0 +1,14 @@
+[project]
+name = "space-defender-ultimate"
+version = "1.0.0"
+description = "A professional Space Defender game implementation"
+dependencies = [
+    "flask",
+    "flask-sqlalchemy",
+    "flask-cors",
+    "python-dotenv",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["space_defender"]
